@@ -1,16 +1,39 @@
-/* Apply to body or a specific container */
-body {
-  height: 100vh;
-  margin: 0;
-  background: linear-gradient(120deg, #4b2e2e, #b8916e, #4b2e2e);
-  background-size: 300% 300%;
-  animation: gradientAnimation 10s ease infinite;
-  font-family: Arial, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Brown Background</title>
+  <style>
+    /* Apply to entire page */
+    body {
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(120deg, #4b2e2e, #b8916e, #4b2e2e);
+      background-size: 300% 300%;
+      animation: gradientAnimation 10s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
 
-/* Animation for smooth fading gradient */
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    /* Animation for smooth fading gradient */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Example heading to show on the page */
+    h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Your Brown Gradient Page</h1>
+</body>
+</html>
