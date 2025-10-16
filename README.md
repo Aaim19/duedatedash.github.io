@@ -30,3 +30,4 @@
   <h1>DueDateDash 9A</h1>
 </body>
 </html>
+</!DOCTYPE html>
