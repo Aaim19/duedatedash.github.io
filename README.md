@@ -17,6 +17,7 @@
       align-items: center;
       background: #3e2c1c;
       color: #fff;
+      position: relative;
     }
     /* Animated gradient background */
     body::before {
@@ -29,6 +30,7 @@
       animation: gradientFlow 30s ease infinite;
       z-index: -3;
     }
+    /* Light overlay for depth */
     body::after {
       content: '';
       position: absolute;
@@ -36,6 +38,15 @@
       width: 200%; height: 200%;
       background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05), transparent 60%);
       animation: lightMove 40s linear infinite;
+      z-index: -1;
+    }
+    /* Bottom dark overlay for footer readability */
+    .bottom-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
       z-index: -1;
     }
     @keyframes gradientFlow {
@@ -72,7 +83,7 @@
       flex-direction: column;
       gap: 25px;
     }
-    /* Interactive bubble buttons */
+    /* Bubble buttons with click note */
     .heading-box {
       background: rgba(139, 94, 60, 0.85);
       border-radius: 25px;
@@ -82,6 +93,7 @@
       display: inline-block;
       cursor: pointer;
       animation: floatBubble 6s ease-in-out infinite alternate;
+      position: relative;
     }
     .heading-box:hover {
       transform: scale(1.1);
@@ -97,19 +109,24 @@
       margin: 0;
       text-shadow: 4px 4px 15px rgba(0,0,0,0.7), 0 0 20px rgba(255,255,255,0.1);
     }
+    .click-note {
+      font-size: 0.9rem;
+      color: #ffe0b2;
+      margin-top: 8px;
+      font-style: italic;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+      display: block;
+    }
     a {
       color: #fff;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
+    a:hover { text-decoration: underline; }
     @keyframes floatBubble {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-15px); }
       100% { transform: translateY(0px); }
     }
-    /* Footer */
     footer {
       margin-bottom: 30px;
       text-align: center;
@@ -134,6 +151,9 @@
   <div class="particle" style="left: 70%; width:10px; height:10px; animation-duration:20s;"></div>
   <div class="particle" style="left: 85%; width:14px; height:14px; animation-duration:25s;"></div>
 
+  <!-- Bottom overlay -->
+  <div class="bottom-overlay"></div>
+
   <!-- Header with interactive bubble buttons -->
   <div class="header-container">
     <div class="heading-box">
@@ -141,6 +161,7 @@
     </div>
     <div class="heading-box" onclick="window.location.href='inside.html'">
       <h1><i>Grade 9A’s DueDateDash</i></h1>
+      <span class="click-note">Click here</span>
     </div>
   </div>
 
