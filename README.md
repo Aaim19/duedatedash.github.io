@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +6,6 @@
 <title>Grade 9A DueDateDash</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Base setup */
   body {
     margin: 0;
     height: 100vh;
@@ -22,13 +21,11 @@
     animation: bgFlow 40s ease infinite;
     position: relative;
   }
-  /* Gradient animation */
   @keyframes bgFlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
-  /* Particles */
   .particle {
     position: absolute;
     border-radius: 50%;
@@ -42,7 +39,6 @@
     90% { opacity: 0.2; }
     100% { transform: translateY(-100vh) translateX(0) rotate(360deg); opacity: 0; }
   }
-  /* Bottom overlay for footer */
   .bottom-overlay {
     position: absolute;
     bottom: 0;
@@ -51,7 +47,6 @@
     background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
     z-index: -1;
   }
-  /* Header container */
   .header-container {
     margin-top: 60px;
     display: flex;
@@ -61,7 +56,6 @@
     z-index: 1;
     width: 100%;
   }
-  /* Branded bubble buttons */
   .heading-box {
     background: rgba(139,94,60,0.9);
     border-radius: 30px;
@@ -108,7 +102,6 @@
     50% { transform: translateY(-12px); }
     100% { transform: translateY(0); }
   }
-  /* Footer styling */
   footer {
     margin-bottom: 30px;
     text-align: center;
@@ -123,7 +116,6 @@
   }
   footer p:nth-child(1) { font-weight: 500; font-size: 1.1rem; }
   footer p:nth-child(5) { font-size: 1.1rem; font-style: italic; color: #e0b98a; }
-  /* Responsive adjustments */
   @media(max-width: 768px){
     .heading-box h1 { font-size: 2rem; }
     .heading-box { padding: 18px 35px; }
@@ -145,11 +137,11 @@
 
   <!-- Header -->
   <div class="header-container">
-    <div class="heading-box">
+    <div class="heading-box" onclick="window.location.href='doubts.html'">
       <h1>Business Grade 9</h1>
+      <span class="click-note">Click here</span>
     </div>
-    <!-- Clickable heading now points to chat.html -->
-    <div class="heading-box" onclick="window.location.href='chat.html'">
+    <div class="heading-box" onclick="window.location.href='inside.html'">
       <h1><i>Grade 9A’s DueDateDash</i></h1>
       <span class="click-note">Click here</span>
     </div>
