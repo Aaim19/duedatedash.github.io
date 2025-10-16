@@ -32,9 +32,8 @@
       text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     }
   </style>
-</head>
-<body>
-  <h1> <i> Grade 9A’s DueDateDash </i> </h1>
+  </style>
+  </head>
 </body>
 </html>
 
