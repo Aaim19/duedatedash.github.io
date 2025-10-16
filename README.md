@@ -128,7 +128,6 @@
     .heading-box h1 { font-size: 2rem; }
     .heading-box { padding: 18px 35px; }
     footer { font-size: 1rem; }
-  
   }
 </style>
 </head>
@@ -149,7 +148,8 @@
     <div class="heading-box">
       <h1>Business Grade 9</h1>
     </div>
-    <div class="heading-box" onclick="window.location.href='inside.html'">
+    <!-- Clickable heading now points to chat.html -->
+    <div class="heading-box" onclick="window.location.href='chat.html'">
       <h1><i>Grade 9A’s DueDateDash</i></h1>
       <span class="click-note">Click here</span>
     </div>
