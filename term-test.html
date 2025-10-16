@@ -1,1 +1,125 @@
 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Animated brown gradient background */
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Baloo 2', cursive;
+      color: #fff8e7;
+      background: linear-gradient(120deg, #3e2c1c, #8b5e3c, #d4a373, #8b5e3c, #3e2c1c);
+      background-size: 400% 400%;
+      animation: gradientFlow 20s ease infinite;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Darker lower overlay */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+      z-index: -1;
+    }
+
+    /* Sparkles floating animation */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      animation: sparkleFloat linear infinite;
+    }
+
+    @keyframes sparkleFloat {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      25% { opacity: 0.4; }
+      50% { transform: translateY(-50vh) translateX(30px); opacity: 0.6; }
+      75% { opacity: 0.4; }
+      100% { transform: translateY(-100vh) translateX(0); opacity: 0; }
+    }
+
+    /* Typing effect setup */
+    h1 {
+      font-size: 2.8rem;
+      color: #fff8e7;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.6), 0 0 25px rgba(212,163,115,0.8);
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 4px solid #fff8e7;
+      width: 0;
+      animation: typing 3s steps(15) forwards, blink 0.8s step-end infinite, glowPulse 3s ease-in-out infinite;
+    }
+
+    /* Typing animation */
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 16ch; } /* matches "COMING SOON..." length */
+    }
+
+    /* Cursor blink */
+    @keyframes blink {
+      0%, 50% { border-color: #fff8e7; }
+      50.1%, 100% { border-color: transparent; }
+    }
+
+    /* Soft glowing text effect */
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 20px rgba(212,163,115,0.3); }
+      50% { text-shadow: 0 0 15px rgba(255,255,255,0.9), 0 0 30px rgba(212,163,115,0.8); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 1.1rem;
+      color: #e0b98a;
+      font-style: italic;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+      opacity: 0;
+      animation: fadeInFooter 2s ease 3.5s forwards;
+    }
+
+    @keyframes fadeInFooter {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating sparkles -->
+  <div class="sparkle" style="left:10%; animation-duration:18s;"></div>
+  <div class="sparkle" style="left:25%; animation-duration:22s;"></div>
+  <div class="sparkle" style="left:50%; animation-duration:20s;"></div>
+  <div class="sparkle" style="left:75%; animation-duration:25s;"></div>
+  <div class="sparkle" style="left:90%; animation-duration:27s;"></div>
+
+  <!-- Typing text -->
+  <h1>COMING SOON...</h1>
+
+  <!-- Footer -->
+  <footer>“Patience builds perfection.”</footer>
+
+</body>
+</html>
