@@ -1,23 +1,24 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade 9A’s DueDateDash</title>
+  <title>Grade 9A DueDateDash</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* Full-screen body */
+    /* Body setup */
     body {
       margin: 0;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Baloo 2', cursive;
       overflow: hidden;
-      background: #3e2c1c; /* fallback color */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background: #3e2c1c;
+      color: #fff;
     }
-
-    /* Animated gradient background using pseudo-element */
     body::before {
       content: '';
       position: absolute;
@@ -26,18 +27,17 @@
       background: linear-gradient(270deg, #3e2c1c, #8b5e3c, #d4a373, #8b5e3c, #3e2c1c);
       background-size: 1000% 1000%;
       animation: gradientFlow 30s ease infinite;
-      z-index: -2;
+      z-index: -3;
     }
-
-    /* Floating particles */
-    .particle {
+    body::after {
+      content: '';
       position: absolute;
-      width: 10px; height: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 50%;
-      animation: floatParticle 20s linear infinite;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05), transparent 60%);
+      animation: lightMove 40s linear infinite;
+      z-index: -1;
     }
-
     @keyframes gradientFlow {
       0% { background-position: 0% 50%; }
       25% { background-position: 50% 100%; }
@@ -45,7 +45,18 @@
       75% { background-position: 50% 0%; }
       100% { background-position: 0% 50%; }
     }
-
+    @keyframes lightMove {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* Particles setup */
+    .particle {
+      position: absolute;
+      width: 10px; height: 10px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      animation: floatParticle linear infinite;
+    }
     @keyframes floatParticle {
       0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
       10% { opacity: 0.2; }
@@ -53,30 +64,65 @@
       90% { opacity: 0.2; }
       100% { transform: translateY(-100vh) translateX(0) rotate(360deg); opacity: 0; }
     }
-
-    /* Central heading */
-    h1 {
-      position: relative;
+    /* Header container at top */
+    .header-container {
+      margin-top: 60px;
+      text-align: center;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    /* Bubble headings */
+    h1 {
       font-size: 4rem;
       color: #fff;
-      font-style: italic;
-      text-shadow: 2px 2px 15px rgba(0,0,0,0.7), 0 0 20px rgba(255,255,255,0.1);
-      animation: pulseText 3s ease-in-out infinite alternate;
-      text-align: center;
+      font-style: normal;
+      text-shadow: 4px 4px 20px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.15);
+      margin: 0;
+      animation: floatBubble 6s ease-in-out infinite alternate;
+      transition: transform 0.3s, text-shadow 0.3s;
+    }
+    h1:hover {
+      transform: scale(1.1);
+      text-shadow: 6px 6px 30px rgba(0,0,0,0.9), 0 0 35px rgba(255,255,255,0.3);
+      cursor: pointer;
+    }
+    /* Floating animation */
+    @keyframes floatBubble {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
     }
 
-    @keyframes pulseText {
-      0% { text-shadow: 2px 2px 15px rgba(0,0,0,0.7), 0 0 20px rgba(255,255,255,0.1); }
-      50% { text-shadow: 2px 2px 25px rgba(0,0,0,0.8), 0 0 30px rgba(255,255,255,0.3); }
-      100% { text-shadow: 2px 2px 15px rgba(0,0,0,0.7), 0 0 20px rgba(255,255,255,0.1); }
+   a {
+      color: #fff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Footer styling */
+    footer {
+      margin-bottom: 30px;
+      text-align: center;
+      color: #d4a373; /* light brown */
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+    footer p {
+      margin: 5px;
+    }
+    /* Responsive bubble headings */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- Heading -->
-  <h1> Business Grade 9 </h1>
 
   <!-- Floating particles -->
   <div class="particle" style="left: 10%; width:8px; height:8px; animation-duration:18s;"></div>
@@ -85,52 +131,20 @@
   <div class="particle" style="left: 70%; width:10px; height:10px; animation-duration:20s;"></div>
   <div class="particle" style="left: 85%; width:14px; height:14px; animation-duration:25s;"></div>
 
-</body>
-</html>
+  <!-- Header with bubble headings -->
+  <div class="header-container">
+    <h1>Business Grade 9</h1>
+    <h1><a href="inside.html"><i>Grade 9A’s DueDateDash</i></a></h1>
+  </div>
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade 9A DueDateDash</title>
-  <style>
-    body {
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(120deg, #4b2e2e, #b8916e, #4b2e2e);
-      background-size: 300% 300%;
-      animation: gradientAnimation 10s ease infinite;
-      font-family: Arial, sans-serif;
-      color: #fff;
-    }
+  <!-- Footer -->
+  <footer>
+    <p>By:</p>
+    <p>Aaim</p>
+    <p>Shadhan</p>
+    <p>Yuaan</p>
+    <p>"Push your limits"</p>
+  </footer>
 
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    h1 {
-      font-style: italic; /* makes the heading italic */
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    }
-
-    a {
-      color: #fff; /* make link white */
-      text-decoration: none; /* remove underline */
-    }
-
-    a:hover {
-      text-decoration: underline; /* underline on hover */
-    }
-  </style>
-</head>
-<body>
-  <h1>
-    <a href="inside.html"><i>Grade 9A’s DueDateDash</i></a>
-  </h1>
 </body>
 </html>
