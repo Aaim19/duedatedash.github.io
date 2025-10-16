@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -34,6 +34,6 @@
   </style>
 </head>
 <body>
-  <h1>Welcome to Your Brown Gradient Page</h1>
+  <h1> <i> Grade 9A’s DueDateDash </i> </h1>
 </body>
 </html>
