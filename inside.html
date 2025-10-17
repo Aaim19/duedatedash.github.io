@@ -1,9 +1,10 @@
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inside | Grade 9A Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
   <style>
     /* ===== BACKGROUND ===== */
     body {
@@ -13,17 +14,17 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: 'Playfair Display', serif;
-      color: #fff;
-      background: radial-gradient(circle at top left, #2e1f13, #4b2f1b, #8b5e3c, #3e2c1c);
-      background-size: 400% 400%;
-      animation: gradientLuxury 25s ease infinite;
+      font-family: 'Poppins', sans-serif;
+      color: #fefae0;
+      background: radial-gradient(circle at top left, #1c120b, #2a1a12, #3b2618, #23160e);
+      background-size: 300% 300%;
+      animation: luxuryFlow 25s ease infinite;
       overflow: hidden;
       position: relative;
       perspective: 1000px;
     }
 
-    @keyframes gradientLuxury {
+    @keyframes luxuryFlow {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
@@ -33,16 +34,16 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.25));
-      backdrop-filter: blur(6px);
+      background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3));
       z-index: 0;
+      backdrop-filter: blur(4px);
     }
 
-    /* ===== FLOATING GOLD PARTICLES ===== */
+    /* ===== FLOATING GOLD DUST ===== */
     .gold {
       position: absolute;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,215,0,0.9) 0%, rgba(255,215,0,0) 70%);
+      background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(255,215,0,0) 70%);
       opacity: 0.3;
       animation: goldDrift linear infinite;
     }
@@ -53,37 +54,57 @@
       100% { transform: translateY(-100vh) translateX(40px); opacity: 0.1; }
     }
 
-    /* ===== CARD / BOX DESIGN ===== */
+    /* ===== NAVIGATION BOX ===== */
     .nav-box {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 280px;
-      height: 90px;
-      background: rgba(255, 255, 255, 0.07);
+      width: 290px;
+      height: 95px;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 25px;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 0 15px rgba(255,255,255,0.05);
-      margin: 14px 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.03);
+      margin: 16px 0;
       text-decoration: none;
       color: #fff8e7;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       text-align: center;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       position: relative;
       overflow: hidden;
       z-index: 1;
-      transition: all 0.5s ease;
+      transition: all 0.6s ease;
       backdrop-filter: blur(6px);
-      animation: fadeUp 1s ease forwards;
-      transform-style: preserve-3d;
+      animation: boxEntrance 1s ease forwards;
+      opacity: 0;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes boxEntrance {
+      0% {
+        transform: translateY(50px) scale(0.9) rotateX(15deg);
+        opacity: 0;
+        filter: blur(5px);
+      }
+      60% {
+        transform: translateY(-10px) scale(1.03);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        filter: blur(0);
+      }
     }
 
+    /* Add staggered appearance */
+    .nav-box:nth-child(6) { animation-delay: 0.2s; }
+    .nav-box:nth-child(7) { animation-delay: 0.4s; }
+    .nav-box:nth-child(8) { animation-delay: 0.6s; }
+    .nav-box:nth-child(9) { animation-delay: 0.8s; }
+    .nav-box:nth-child(10) { animation-delay: 1s; }
+
+    /* ===== GOLD LIGHT SWEEP ===== */
     .nav-box::after {
       content: "";
       position: absolute;
@@ -91,48 +112,47 @@
       left: -75%;
       width: 50%;
       height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      background: linear-gradient(120deg, transparent, rgba(255,215,0,0.4), transparent);
       transform: skewX(-20deg);
-      transition: 0.7s;
+      transition: 0.8s;
       z-index: 0;
     }
 
     .nav-box:hover::after {
-      left: 125%;
+      left: 130%;
     }
 
-    /* ===== LUXURY HOVER EFFECT ===== */
+    /* ===== HOVER EFFECT ===== */
     .nav-box:hover {
-      transform: rotateY(10deg) translateY(-10px) scale(1.05);
-      border: 1px solid rgba(255, 215, 0, 0.5);
-      box-shadow: 0 0 25px rgba(255,215,0,0.3), 0 10px 25px rgba(0,0,0,0.7), inset 0 0 20px rgba(255,255,255,0.1);
-      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-12px) scale(1.07);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      box-shadow: 0 0 30px rgba(255,215,0,0.2),
+                  0 10px 25px rgba(0,0,0,0.7),
+                  inset 0 0 25px rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .nav-box h1 {
+      font-family: 'Playfair Display', serif;
+      color: #f8e7c0;
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin: 0;
+      text-shadow: 0 0 8px rgba(255,215,0,0.3);
+      transition: all 0.3s ease;
+      z-index: 2;
+      position: relative;
     }
 
     .nav-box:hover h1 {
-      color: #ffeabf;
-      text-shadow: 0 0 8px rgba(255,215,0,0.7);
-    }
-
-    .nav-box:active {
-      transform: scale(0.98);
-      box-shadow: inset 0 0 8px rgba(255,255,255,0.15);
-    }
-
-    /* ===== TEXT ===== */
-    h1 {
-      font-family: 'Baloo 2', cursive;
-      color: #f9e4c8;
-      letter-spacing: 1px;
-      font-size: 1.5rem;
-      margin: 0;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
+      color: #ffe6a7;
+      text-shadow: 0 0 10px rgba(255,215,0,0.8);
     }
 
     .nav-box h1::after {
       content: " →";
       opacity: 0;
-      transition: all 0.3s;
+      transition: all 0.4s ease;
       transform: translateX(-10px);
     }
 
@@ -146,10 +166,10 @@
       position: absolute;
       bottom: 18px;
       font-size: 1rem;
-      font-family: 'Baloo 2', cursive;
       color: rgba(255, 255, 255, 0.8);
       letter-spacing: 0.5px;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
     }
 
     footer a {
@@ -162,15 +182,15 @@
 
     footer a:hover {
       opacity: 1;
-      color: #f7e4b1;
-      text-shadow: 0 0 10px rgba(255,215,0,0.7);
+      color: #ffe9a7;
+      text-shadow: 0 0 10px rgba(255,215,0,0.8);
     }
 
     /* ===== RESPONSIVE ===== */
     @media(max-width: 768px) {
       .nav-box {
         width: 80%;
-        height: 80px;
+        height: 85px;
         font-size: 1.1rem;
       }
     }
@@ -193,8 +213,6 @@
   <a href="extra-class.html" class="nav-box"><h1>⏰ Extra Class</h1></a>
 
   <!-- Footer -->
-  <footer>
-    © 2025 Grade 9A | <a href="https://github.com/yourusername/duedatedash">GitHub</a>
-  </footer>
+  <footer> Grade 9A </footer>
 </body>
 </html>
