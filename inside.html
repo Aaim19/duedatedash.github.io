@@ -1,174 +1,200 @@
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inside Page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+  <title>Inside | Grade 9A Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    /* Animated brown gradient background */
+    /* ===== BACKGROUND ===== */
     body {
-      height: 100vh;
       margin: 0;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: 'Baloo 2', cursive;
+      font-family: 'Playfair Display', serif;
       color: #fff;
-      background: linear-gradient(120deg, #3e2c1c, #8b5e3c, #d4a373, #8b5e3c, #3e2c1c);
+      background: radial-gradient(circle at top left, #2e1f13, #4b2f1b, #8b5e3c, #3e2c1c);
       background-size: 400% 400%;
-      animation: gradientFlow 20s ease infinite;
-      gap: 25px;
-      position: relative;
+      animation: gradientLuxury 25s ease infinite;
       overflow: hidden;
+      position: relative;
+      perspective: 1000px;
     }
 
-    @keyframes gradientFlow {
+    @keyframes gradientLuxury {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* Soft overlay to darken lower half for readability */
     body::before {
       content: "";
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,0.5) 100%);
-      backdrop-filter: blur(2px);
-      z-index: -1;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.25));
+      backdrop-filter: blur(6px);
+      z-index: 0;
     }
 
-    /* Floating sparkles */
-    .sparkle {
+    /* ===== FLOATING GOLD PARTICLES ===== */
+    .gold {
       position: absolute;
-      width: 6px;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.2);
       border-radius: 50%;
-      animation: sparkleFloat linear infinite;
+      background: radial-gradient(circle, rgba(255,215,0,0.9) 0%, rgba(255,215,0,0) 70%);
+      opacity: 0.3;
+      animation: goldDrift linear infinite;
     }
 
-    @keyframes sparkleFloat {
-      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-      25% { opacity: 0.4; }
-      50% { transform: translateY(-50vh) translateX(30px); opacity: 0.6; }
-      75% { opacity: 0.4; }
-      100% { transform: translateY(-100vh) translateX(0); opacity: 0; }
+    @keyframes goldDrift {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0.1; }
+      50% { opacity: 0.6; }
+      100% { transform: translateY(-100vh) translateX(40px); opacity: 0.1; }
     }
 
-    /* Fade-in animation for boxes */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Box style */
-    .box {
+    /* ===== CARD / BOX DESIGN ===== */
+    .nav-box {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 260px;
-      height: 80px;
-      background: linear-gradient(145deg, #7b4b2b, #a9745b);
-      border-radius: 20px;
-      box-shadow: 4px 4px 15px rgba(0,0,0,0.6), inset -3px -3px 6px rgba(255,255,255,0.1);
+      width: 280px;
+      height: 90px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 0 15px rgba(255,255,255,0.05);
+      margin: 14px 0;
       text-decoration: none;
       color: #fff8e7;
-      font-size: 1.3rem;
-      transition: all 0.3s ease;
+      font-size: 1.25rem;
+      text-align: center;
       letter-spacing: 1px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
       position: relative;
       overflow: hidden;
-      opacity: 0; /* start hidden */
-      animation: fadeInUp 1s forwards;
+      z-index: 1;
+      transition: all 0.5s ease;
+      backdrop-filter: blur(6px);
+      animation: fadeUp 1s ease forwards;
+      transform-style: preserve-3d;
     }
 
-    /* Add delay for each box */
-    .box:nth-child(6) { animation-delay: 0.2s; }
-    .box:nth-child(7) { animation-delay: 0.4s; }
-    .box:nth-child(8) { animation-delay: 0.6s; }
-    .box:nth-child(9) { animation-delay: 0.8s; }
-    .box:nth-child(10) { animation-delay: 1s; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    .box::before {
+    .nav-box::after {
       content: "";
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
-      transform: scale(0);
-      transition: transform 0.5s ease;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: skewX(-20deg);
+      transition: 0.7s;
+      z-index: 0;
     }
 
-    .box:hover::before {
-      transform: scale(1);
+    .nav-box:hover::after {
+      left: 125%;
     }
 
-    .box:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 8px 8px 20px rgba(0,0,0,0.8), inset 0 0 10px rgba(255,255,255,0.2);
-      background: linear-gradient(145deg, #8b5e3c, #d4a373);
+    /* ===== LUXURY HOVER EFFECT ===== */
+    .nav-box:hover {
+      transform: rotateY(10deg) translateY(-10px) scale(1.05);
+      border: 1px solid rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 25px rgba(255,215,0,0.3), 0 10px 25px rgba(0,0,0,0.7), inset 0 0 20px rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
     }
 
-    .box:active {
+    .nav-box:hover h1 {
+      color: #ffeabf;
+      text-shadow: 0 0 8px rgba(255,215,0,0.7);
+    }
+
+    .nav-box:active {
       transform: scale(0.98);
+      box-shadow: inset 0 0 8px rgba(255,255,255,0.15);
     }
 
+    /* ===== TEXT ===== */
     h1 {
+      font-family: 'Baloo 2', cursive;
+      color: #f9e4c8;
+      letter-spacing: 1px;
+      font-size: 1.5rem;
       margin: 0;
-      font-size: 1.3rem;
-      font-style: italic;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
 
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 1.1rem;
-      color: #e0b98a;
-      font-style: italic;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-    }
-
-    .box h1::after {
+    .nav-box h1::after {
       content: " →";
       opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
+      transition: all 0.3s;
       transform: translateX(-10px);
     }
 
-    .box:hover h1::after {
+    .nav-box:hover h1::after {
       opacity: 1;
-      transform: translateX(5px);
+      transform: translateX(6px);
     }
 
+    /* ===== FOOTER ===== */
+    footer {
+      position: absolute;
+      bottom: 18px;
+      font-size: 1rem;
+      font-family: 'Baloo 2', cursive;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    footer a {
+      color: #fff;
+      opacity: 0.8;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      opacity: 1;
+      color: #f7e4b1;
+      text-shadow: 0 0 10px rgba(255,215,0,0.7);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width: 768px) {
+      .nav-box {
+        width: 80%;
+        height: 80px;
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <!-- Floating gold sparkles -->
+  <div class="gold" style="left:10%; width:10px; height:10px; animation-duration:22s;"></div>
+  <div class="gold" style="left:30%; width:8px; height:8px; animation-duration:25s;"></div>
+  <div class="gold" style="left:55%; width:12px; height:12px; animation-duration:28s;"></div>
+  <div class="gold" style="left:75%; width:14px; height:14px; animation-duration:30s;"></div>
+  <div class="gold" style="left:90%; width:9px; height:9px; animation-duration:26s;"></div>
 
-  <!-- Floating sparkles -->
-  <div class="sparkle" style="left:10%; animation-duration:18s;"></div>
-  <div class="sparkle" style="left:25%; animation-duration:22s;"></div>
-  <div class="sparkle" style="left:50%; animation-duration:20s;"></div>
-  <div class="sparkle" style="left:75%; animation-duration:25s;"></div>
-  <div class="sparkle" style="left:90%; animation-duration:27s;"></div>
+  <!-- Navigation boxes -->
+  <a href="timetable.html" class="nav-box"><h1>📅 Time Table</h1></a>
+  <a href="unit-tests.html" class="nav-box"><h1>📝 Upcoming Unit Tests</h1></a>
+  <a href="term-test.html" class="nav-box"><h1>📚 Term Test</h1></a>
+  <a href="igcse.html" class="nav-box"><h1>🎓 IGCSE</h1></a>
+  <a href="extra-class.html" class="nav-box"><h1>⏰ Extra Class</h1></a>
 
-  <!-- Clickable boxes -->
-  <a href="timetable.html" class="box"><h1>Time Table</h1></a>
-  <a href="unit-tests.html" class="box"><h1>Upcoming Unit Tests</h1></a>
-  <a href="term-test.html" class="box"><h1>Term Test</h1></a>
-  <a href="igcse.html" class="box"><h1>IGCSE</h1></a>
-  <a href="extra-class.html" class="box"><h1>Extra Class</h1></a>
+  <!-- Footer -->
+  <footer>
+    © 2025 Grade 9A | <a href="https://github.com/yourusername/duedatedash">GitHub</a>
+  </footer>
 </body>
 </html>
