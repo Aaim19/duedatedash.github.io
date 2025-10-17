@@ -8,38 +8,43 @@
   /* Base */
   body {
     margin: 0;
-    height: 100vh;
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    overflow: hidden;
+    overflow-x: hidden; /* Allow vertical scroll only */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     background: radial-gradient(circle at top left, #1b1b1b, #000);
     position: relative;
+    min-height: 100vh;
   }
+
   /* Elegant shimmer background */
   body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
     background: linear-gradient(135deg, rgba(255,215,150,0.07), rgba(80,50,20,0.08), rgba(255,215,150,0.07));
     animation: subtleGlow 25s ease-in-out infinite;
     z-index: 0;
+    pointer-events: none;
   }
+
   @keyframes subtleGlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+
   /* Floating light particles */
   .particle {
-    position: absolute;
+    position: fixed;
     border-radius: 50%;
     background: rgba(255,215,150,0.06);
     animation: floatParticle linear infinite;
+    z-index: 0;
   }
+
   @keyframes floatParticle {
     0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
     20% { opacity: 0.3; }
@@ -47,15 +52,18 @@
     80% { opacity: 0.3; }
     100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
   }
+
   /* Header Section */
   .header-container {
-    margin-top: 70px;
+    margin-top: 100px;
+    margin-bottom: 120px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
     align-items: center;
     z-index: 2;
   }
+
   .heading-box {
     background: rgba(30, 20, 10, 0.8);
     border: 1px solid rgba(212,163,115,0.5);
@@ -67,6 +75,7 @@
     position: relative;
     backdrop-filter: blur(10px);
   }
+
   .heading-box::before {
     content: "";
     position: absolute;
@@ -79,10 +88,12 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+
   .heading-box:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 0 45px rgba(255,215,150,0.35);
   }
+
   .heading-box h1 {
     margin: 0;
     font-family: 'Playfair Display', serif;
@@ -94,6 +105,7 @@
     letter-spacing: 1.5px;
     text-shadow: 0 0 15px rgba(255,255,200,0.1);
   }
+
   .click-note {
     font-size: 1rem;
     color: #e0b98a;
@@ -101,24 +113,29 @@
     margin-top: 10px;
     transition: 0.3s ease;
   }
+
   .heading-box:hover .click-note {
     color: #fff4c2;
   }
+
   /* Footer */
   footer {
-    margin-bottom: 30px;
+    margin: 100px 0 40px;
     text-align: center;
     color: #d4a373;
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     z-index: 2;
   }
+
   footer p { margin: 4px 0; }
+
   footer p.quote {
     font-style: italic;
     color: #f8e3b6;
     margin-top: 10px;
   }
+
   .github-link {
     font-size: 0.85rem;
     color: #fff;
@@ -128,11 +145,13 @@
     display: inline-block;
     margin-top: 8px;
   }
+
   .github-link:hover {
     opacity: 1;
     text-decoration: underline;
   }
-  @media(max-width: 768px){
+
+  @media(max-width: 768px) {
     .heading-box { padding: 25px 40px; }
     .heading-box h1 { font-size: 2.2rem; }
     footer { font-size: 0.95rem; }
@@ -152,11 +171,11 @@
   <div class="header-container">
     <div class="heading-box" onclick="window.location.href='doubts.html'">
       <h1>Business Grade 9</h1>
-      <span class="click-note">Click to enter</span>
+      <span class="click-note">Click for notes</span>
     </div>
     <div class="heading-box" onclick="window.location.href='inside.html'">
       <h1>Grade 9A’s DueDateDash</h1>
-      <span class="click-note">Enter the dashboard</span>
+      <span class="click-note">Click here</span>
     </div>
   </div>
 
@@ -164,9 +183,7 @@
   <footer>
     <p>By: Aaim • Shadhan • Yuaan</p>
     <p class="quote">“Push your limits”</p>
-    <a href="https://github.com/yourgithubusername" class="github-link" target="_blank">
-      View on GitHub
-    </a>
+    
   </footer>
 
 </body>
