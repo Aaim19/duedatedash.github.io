@@ -2,25 +2,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Business Class </title>
+  <title>Inside | Grade 9A Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
   <style>
     /* ===== BACKGROUND ===== */
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       font-family: 'Poppins', sans-serif;
       color: #fefae0;
       background: radial-gradient(circle at top left, #1c120b, #2a1a12, #3b2618, #23160e);
       background-size: 300% 300%;
       animation: luxuryFlow 25s ease infinite;
-      overflow: hidden;
       position: relative;
       perspective: 1000px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      scroll-behavior: smooth;
     }
 
     @keyframes luxuryFlow {
@@ -31,20 +32,23 @@
 
     body::before {
       content: "";
-      position: absolute;
+      position: fixed;
       inset: 0;
       background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3));
       z-index: 0;
       backdrop-filter: blur(4px);
+      pointer-events: none;
     }
 
     /* ===== FLOATING GOLD DUST ===== */
     .gold {
-      position: absolute;
+      position: fixed;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(255,215,0,0) 70%);
       opacity: 0.3;
       animation: goldDrift linear infinite;
+      z-index: 0;
+      pointer-events: none;
     }
 
     @keyframes goldDrift {
@@ -53,18 +57,30 @@
       100% { transform: translateY(-100vh) translateX(40px); opacity: 0.1; }
     }
 
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 0 100px;
+      gap: 20px;
+    }
+
     /* ===== NAVIGATION BOX ===== */
     .nav-box {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 300px;
+      width: 320px;
       height: 100px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 215, 150, 0.1));
+      background: linear-gradient(145deg, rgba(255,255,255,0.18), rgba(255,215,150,0.1));
       border-radius: 25px;
       border: 1px solid rgba(255,255,255,0.25);
       box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 0 15px rgba(255,255,255,0.1);
-      margin: 16px 0;
       text-decoration: none;
       color: #fff8e7;
       font-size: 1.3rem;
@@ -85,12 +101,11 @@
       100% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
     }
 
-    /* Add staggered appearance */
-    .nav-box:nth-child(6) { animation-delay: 0.2s; }
-    .nav-box:nth-child(7) { animation-delay: 0.4s; }
-    .nav-box:nth-child(8) { animation-delay: 0.6s; }
-    .nav-box:nth-child(9) { animation-delay: 0.8s; }
-    .nav-box:nth-child(10) { animation-delay: 1s; }
+    .nav-box:nth-child(1) { animation-delay: 0.1s; }
+    .nav-box:nth-child(2) { animation-delay: 0.3s; }
+    .nav-box:nth-child(3) { animation-delay: 0.5s; }
+    .nav-box:nth-child(4) { animation-delay: 0.7s; }
+    .nav-box:nth-child(5) { animation-delay: 0.9s; }
 
     /* ===== GOLD LIGHT SWEEP ===== */
     .nav-box::after {
@@ -112,8 +127,8 @@
 
     /* ===== HOVER EFFECT ===== */
     .nav-box:hover {
-      transform: translateY(-12px) scale(1.07);
-      border: 1px solid rgba(255, 215, 0, 0.6);
+      transform: translateY(-10px) scale(1.07);
+      border: 1px solid rgba(255,215,0,0.6);
       box-shadow: 0 0 35px rgba(255,215,0,0.4),
                   0 10px 25px rgba(0,0,0,0.7),
                   inset 0 0 25px rgba(255,255,255,0.15);
@@ -151,13 +166,16 @@
 
     /* ===== FOOTER ===== */
     footer {
-      position: absolute;
-      bottom: 18px;
+      width: 100%;
+      text-align: center;
+      padding: 30px 0;
       font-size: 1rem;
       color: rgba(255, 255, 255, 0.8);
       letter-spacing: 0.5px;
       font-family: 'Poppins', sans-serif;
       text-shadow: 0 0 10px rgba(255,255,255,0.2);
+      z-index: 2;
+      position: relative;
     }
 
     footer a {
@@ -193,12 +211,14 @@
   <div class="gold" style="left:75%; width:14px; height:14px; animation-duration:30s;"></div>
   <div class="gold" style="left:90%; width:9px; height:9px; animation-duration:26s;"></div>
 
-  <!-- Navigation boxes -->
-  <a href="timetable.html" class="nav-box"><h1>📅 Time Table</h1></a>
-  <a href="unit-tests.html" class="nav-box"><h1>📝 Upcoming Unit Tests</h1></a>
-  <a href="term-test.html" class="nav-box"><h1>📚 Term Test</h1></a>
-  <a href="igcse.html" class="nav-box"><h1>🎓 IGCSE</h1></a>
-  <a href="extra-class.html" class="nav-box"><h1>⏰ Extra Class</h1></a>
+  <!-- Main content -->
+  <div class="container">
+    <a href="timetable.html" class="nav-box"><h1>📅 Time Table</h1></a>
+    <a href="unit-tests.html" class="nav-box"><h1>📝 Upcoming Unit Tests</h1></a>
+    <a href="term-test.html" class="nav-box"><h1>📚 Term Test</h1></a>
+    <a href="igcse.html" class="nav-box"><h1>🎓 IGCSE</h1></a>
+    <a href="extra-class.html" class="nav-box"><h1>⏰ Extra Class</h1></a>
+  </div>
 
   <!-- Footer -->
   <footer>Grade 9A</footer>
