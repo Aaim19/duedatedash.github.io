@@ -1,159 +1,172 @@
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grade 9A DueDateDash</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<title>Grade 9A | DueDateDash</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Base */
   body {
     margin: 0;
     height: 100vh;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #fff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #3e2c1c, #8b5e3c, #d4a373, #8b5e3c, #3e2c1c);
-    background-size: 500% 500%;
-    animation: bgFlow 40s ease infinite;
+    background: radial-gradient(circle at top left, #1b1b1b, #000);
     position: relative;
   }
-  @keyframes bgFlow {
+  /* Elegant shimmer background */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,215,150,0.07), rgba(80,50,20,0.08), rgba(255,215,150,0.07));
+    animation: subtleGlow 25s ease-in-out infinite;
+    z-index: 0;
+  }
+  @keyframes subtleGlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+  /* Floating light particles */
   .particle {
     position: absolute;
     border-radius: 50%;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,215,150,0.06);
     animation: floatParticle linear infinite;
   }
   @keyframes floatParticle {
-    0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.2; }
-    50% { transform: translateY(-50vh) translateX(50px) rotate(180deg); opacity: 0.5; }
-    90% { opacity: 0.2; }
-    100% { transform: translateY(-100vh) translateX(0) rotate(360deg); opacity: 0; }
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.3; }
+    50% { transform: translateY(-50vh) rotate(180deg); opacity: 0.6; }
+    80% { opacity: 0.3; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
   }
-  .bottom-overlay {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 35%;
-    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
-    z-index: -1;
-  }
+  /* Header Section */
   .header-container {
-    margin-top: 60px;
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
     align-items: center;
-    z-index: 1;
-    width: 100%;
+    z-index: 2;
   }
   .heading-box {
-    background: rgba(139,94,60,0.9);
-    border-radius: 30px;
-    padding: 25px 60px;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.07);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: rgba(30, 20, 10, 0.8);
+    border: 1px solid rgba(212,163,115,0.5);
+    border-radius: 25px;
+    padding: 35px 70px;
+    box-shadow: 0 0 25px rgba(212,163,115,0.15), inset 0 0 10px rgba(255,215,150,0.05);
     transition: all 0.4s ease;
     cursor: pointer;
     position: relative;
-    animation: floatBubble 5s ease-in-out infinite alternate;
+    backdrop-filter: blur(10px);
+  }
+  .heading-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    padding: 2px;
+    background: linear-gradient(145deg, rgba(255,215,150,0.5), rgba(139,94,60,0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
   .heading-box:hover {
-    transform: translateY(-8px) scale(1.08);
-    box-shadow: 0 0 35px rgba(255, 255, 200,0.6), 10px 10px 30px rgba(0,0,0,0.85), inset 0 0 18px rgba(255,255,255,0.1);
-  }
-  .heading-box:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 20px rgba(255, 255, 200,0.4), 5px 5px 18px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.05);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 0 45px rgba(255,215,150,0.35);
   }
   .heading-box h1 {
     margin: 0;
-    font-family: 'Baloo 2', cursive;
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 3rem;
-    text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
-    letter-spacing: 1px;
+    background: linear-gradient(to right, #d4a373, #fff4c2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 15px rgba(255,255,200,0.1);
   }
   .click-note {
     font-size: 1rem;
-    color: #ffe0b2;
+    color: #e0b98a;
     font-style: italic;
-    margin-top: 8px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
+    margin-top: 10px;
+    transition: 0.3s ease;
   }
   .heading-box:hover .click-note {
-    color: #fff2d1;
-    transform: translateY(-2px);
+    color: #fff4c2;
   }
-  @keyframes floatBubble {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-    100% { transform: translateY(0); }
-  }
+  /* Footer */
   footer {
     margin-bottom: 30px;
     text-align: center;
     color: #d4a373;
-    font-family: 'Baloo 2', cursive;
-    font-size: 1.2rem;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.45);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    z-index: 2;
   }
-  footer p:nth-child(1) { font-weight: 500; font-size: 1.1rem; }
-  footer p:nth-child(5) { font-size: 1.1rem; font-style: italic; color: #e0b98a; }
+  footer p { margin: 4px 0; }
+  footer p.quote {
+    font-style: italic;
+    color: #f8e3b6;
+    margin-top: 10px;
+  }
+  .github-link {
+    font-size: 0.85rem;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 8px;
+  }
+  .github-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
   @media(max-width: 768px){
-    .heading-box h1 { font-size: 2rem; }
-    .heading-box { padding: 18px 35px; }
-    footer { font-size: 1rem; }
+    .heading-box { padding: 25px 40px; }
+    .heading-box h1 { font-size: 2.2rem; }
+    footer { font-size: 0.95rem; }
   }
 </style>
 </head>
 <body>
 
   <!-- Particles -->
-  <div class="particle" style="left:10%; width:8px; height:8px; animation-duration:18s;"></div>
-  <div class="particle" style="left:25%; width:12px; height:12px; animation-duration:22s;"></div>
-  <div class="particle" style="left:50%; width:6px; height:6px; animation-duration:16s;"></div>
-  <div class="particle" style="left:70%; width:10px; height:10px; animation-duration:20s;"></div>
-  <div class="particle" style="left:85%; width:14px; height:14px; animation-duration:25s;"></div>
-
-  <!-- Bottom overlay -->
-  <div class="bottom-overlay"></div>
+  <div class="particle" style="left:10%; width:6px; height:6px; animation-duration:18s;"></div>
+  <div class="particle" style="left:30%; width:10px; height:10px; animation-duration:22s;"></div>
+  <div class="particle" style="left:50%; width:8px; height:8px; animation-duration:25s;"></div>
+  <div class="particle" style="left:70%; width:12px; height:12px; animation-duration:28s;"></div>
+  <div class="particle" style="left:85%; width:14px; height:14px; animation-duration:32s;"></div>
 
   <!-- Header -->
   <div class="header-container">
     <div class="heading-box" onclick="window.location.href='doubts.html'">
       <h1>Business Grade 9</h1>
-      <span class="click-note">Click here</span>
+      <span class="click-note">Click to enter</span>
     </div>
     <div class="heading-box" onclick="window.location.href='inside.html'">
-      <h1><i>Grade 9A’s DueDateDash</i></h1>
-      <span class="click-note">Click here</span>
+      <h1>Grade 9A’s DueDateDash</h1>
+      <span class="click-note">Enter the dashboard</span>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>By:</p>
-    <p>Aaim</p>
-    <p>Shadhan</p>
-    <p>Yuaan</p>
-    <p>"Push your limits"</p>
+    <p>By: Aaim • Shadhan • Yuaan</p>
+    <p class="quote">“Push your limits”</p>
+    <a href="https://github.com/yourgithubusername" class="github-link" target="_blank">
+      View on GitHub
+    </a>
   </footer>
 
 </body>
