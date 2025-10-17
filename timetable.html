@@ -1,62 +1,73 @@
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>9A Timetable</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
     font-family: 'Baloo 2', cursive;
-    background: linear-gradient(135deg, #2b1a0f, #4a2e1b, #5c3a24);
+    background: linear-gradient(135deg, #1f140c, #2f1a11, #412513, #593218);
+    background-size: 400% 400%;
+    animation: luxuryShift 30s ease infinite;
     color: #fff8e7;
     display: flex;
     justify-content: center;
     padding: 40px 20px;
   }
 
+  @keyframes luxuryShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   h1 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #fce7c3;
-    text-shadow: 1px 2px 6px rgba(0,0,0,0.6);
+    font-size: 2.3rem;
+    margin-bottom: 35px;
+    font-family: 'Playfair Display', serif;
+    color: #fbe4b3;
+    text-shadow: 0 0 15px rgba(255,215,128,0.4);
+    letter-spacing: 1px;
   }
 
   table {
     width: 100%;
     max-width: 1100px;
     border-collapse: collapse;
-    background: linear-gradient(145deg, #4a2e1b, #6b3e29);
-    border-radius: 12px;
+    background: linear-gradient(145deg, #3a2415, #4f2d19);
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset -2px -2px 8px rgba(255,255,255,0.05);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7), inset -2px -2px 10px rgba(255,255,255,0.05);
   }
 
   th, td {
-    padding: 12px 10px;
+    padding: 14px 12px;
     text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     color: #f8e7d4;
-    font-size: 0.95rem;
+    font-size: 1rem;
     position: relative;
   }
 
   th {
-    background: linear-gradient(145deg, #5c3a24, #7b5235);
-    font-size: 1rem;
+    background: linear-gradient(145deg, #5b3a23, #7b5235);
+    font-size: 1.05rem;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #ffe9c0;
   }
 
   tr:nth-child(even) {
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.02);
   }
 
   tr:hover {
-    background: rgba(212,163,115,0.2);
+    background: rgba(212,163,115,0.18);
     transform: scale(1.01);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
   }
 
   td.time {
@@ -66,24 +77,30 @@
 
   td.subject {
     font-style: italic;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff4d4;
   }
 
-  td.teacher {
-    font-size: 0.75rem;
-    color: #f4d9b4;
-    margin-top: 2px;
+  td .teacher {
+    display: block;
+    font-size: 0.75rem; /* smaller than subject */
+    font-weight: 500;
+    color: #f3d9b0;
+    opacity: 0.85;
+    margin-top: 3px;
   }
 
   .break {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.07);
     font-weight: bold;
     font-size: 0.95rem;
     color: #ffdca1;
+    text-transform: uppercase;
   }
 
   @media(max-width:900px){
-    th, td { font-size: 0.85rem; padding: 8px; }
+    th, td { font-size: 0.9rem; padding: 10px; }
   }
 
   @media(max-width:600px){
@@ -107,7 +124,7 @@
     font-size: 1rem;
     color: #e0b98a;
     font-style: italic;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
   }
 </style>
 </head>
@@ -131,26 +148,26 @@
       <tr>
         <td class="time" data-label="Period">1<br><small>7:15 - 8:00</small></td>
         <td data-label="Su"></td>
-        <td class="subject" data-label="Mo">Dhi<br><span class="teacher">Lhomrath Ali</span></td>
-        <td class="subject" data-label="Tu">Eco<br><span class="teacher">Hamidh Rasheed</span></td>
-        <td class="subject" data-label="We">CS/TT<br><span class="teacher">Ahmed Sameeh / Mohamed Izmeen</span></td>
-        <td class="subject" data-label="Th">Eng<br><span class="teacher">Ahmed Munsif</span></td>
+        <td class="subject" data-label="Mo">Dhi<span class="teacher">Lhomrath Ali</span></td>
+        <td class="subject" data-label="Tu">Eco<span class="teacher">Hamidh Rasheed</span></td>
+        <td class="subject" data-label="We">CS/TT<span class="teacher">Ahmed Sameeh / Mohamed Izmeen</span></td>
+        <td class="subject" data-label="Th">Eng<span class="teacher">Ahmed Munsif</span></td>
       </tr>
       <tr>
         <td class="time" data-label="Period">2<br><small>8:00 - 8:45</small></td>
-        <td class="subject" data-label="Su">Mat<br><span class="teacher">Hassan Rasheed</span></td>
-        <td class="subject" data-label="Mo">Isl<br><span class="teacher">Fariyal Moosa</span></td>
-        <td class="subject" data-label="Tu">Dhi<br><span class="teacher">Lhomrath Ali</span></td>
-        <td class="subject" data-label="We">Mat<br><span class="teacher">Hassan Rasheed</span></td>
-        <td class="subject" data-label="Th">BS<br><span class="teacher">Shahidha Qasim</span></td>
+        <td class="subject" data-label="Su">Mat<span class="teacher">Hassan Rasheed</span></td>
+        <td class="subject" data-label="Mo">Isl<span class="teacher">Fariyal Moosa</span></td>
+        <td class="subject" data-label="Tu">Dhi<span class="teacher">Lhomrath Ali</span></td>
+        <td class="subject" data-label="We">Mat<span class="teacher">Hassan Rasheed</span></td>
+        <td class="subject" data-label="Th">BS<span class="teacher">Shahidha Qasim</span></td>
       </tr>
       <tr>
         <td class="time" data-label="Period">3<br><small>8:45 - 9:30</small></td>
-        <td class="subject" data-label="Su">Dhi<br><span class="teacher">Lhomrath Ali</span></td>
-        <td class="subject" data-label="Mo">CS/TT<br><span class="teacher">Ahmed Sameeh / Mohamed Izmeen</span></td>
-        <td class="subject" data-label="Tu">BS<br><span class="teacher">Shahidha Qasim</span></td>
-        <td class="subject" data-label="We">Eco<br><span class="teacher">Hamidh Rasheed</span></td>
-        <td class="subject" data-label="Th">Dhi<br><span class="teacher">Lhomrath Ali</span></td>
+        <td class="subject" data-label="Su">Dhi<span class="teacher">Lhomrath Ali</span></td>
+        <td class="subject" data-label="Mo">CS/TT<span class="teacher">Ahmed Sameeh / Mohamed Izmeen</span></td>
+        <td class="subject" data-label="Tu">BS<span class="teacher">Shahidha Qasim</span></td>
+        <td class="subject" data-label="We">Eco<span class="teacher">Hamidh Rasheed</span></td>
+        <td class="subject" data-label="Th">Dhi<span class="teacher">Lhomrath Ali</span></td>
       </tr>
 
       <tr class="break">
@@ -160,27 +177,27 @@
 
       <tr>
         <td class="time" data-label="Period">4<br><small>9:45 - 10:30</small></td>
-        <td class="subject" data-label="Su">Qr<br><span class="teacher">Ahmed Firaq</span></td>
-        <td class="subject" data-label="Mo">Acc<br><span class="teacher">Ali Saed</span></td>
-        <td class="subject" data-label="Tu">Mat<br><span class="teacher">Hassan Rasheed</span></td>
-        <td class="subject" data-label="We">Isl<br><span class="teacher">Fariyal Moosa</span></td>
-        <td class="subject" data-label="Th">CS/TT<br><span class="teacher">Ahmed Sameeh / Mohamed Izmeen</span></td>
+        <td class="subject" data-label="Su">Qr<span class="teacher">Ahmed Firaq</span></td>
+        <td class="subject" data-label="Mo">Acc<span class="teacher">Ali Saed</span></td>
+        <td class="subject" data-label="Tu">Mat<span class="teacher">Hassan Rasheed</span></td>
+        <td class="subject" data-label="We">Isl<span class="teacher">Fariyal Moosa</span></td>
+        <td class="subject" data-label="Th">CS/TT<span class="teacher">Ahmed Sameeh / Mohamed Izmeen</span></td>
       </tr>
       <tr>
         <td class="time" data-label="Period">5<br><small>10:30 - 11:15</small></td>
-        <td class="subject" data-label="Su">Eng<br><span class="teacher">Ahmed Munsif</span></td>
-        <td class="subject" data-label="Mo">BS<br><span class="teacher">Shahidha Qasim</span></td>
-        <td class="subject" data-label="Tu">Acc<br><span class="teacher">Ali Saed</span></td>
-        <td class="subject" data-label="We">Qr<br><span class="teacher">Ahmed Firaq</span></td>
-        <td class="subject" data-label="Th">Eco<br><span class="teacher">Hamidh Rasheed</span></td>
+        <td class="subject" data-label="Su">Eng<span class="teacher">Ahmed Munsif</span></td>
+        <td class="subject" data-label="Mo">BS<span class="teacher">Shahidha Qasim</span></td>
+        <td class="subject" data-label="Tu">Acc<span class="teacher">Ali Saed</span></td>
+        <td class="subject" data-label="We">Qr<span class="teacher">Ahmed Firaq</span></td>
+        <td class="subject" data-label="Th">Eco<span class="teacher">Hamidh Rasheed</span></td>
       </tr>
       <tr>
         <td class="time" data-label="Period">6<br><small>11:15 - 12:00</small></td>
-        <td class="subject" data-label="Su">Isl<br><span class="teacher">Fariyal Moosa</span></td>
-        <td class="subject" data-label="Mo">Mat<br><span class="teacher">Hassan Rasheed</span></td>
-        <td class="subject" data-label="Tu">Eng<br><span class="teacher">Ahmed Munsif</span></td>
-        <td class="subject" data-label="We">Acc<br><span class="teacher">Ali Saed</span></td>
-        <td class="subject" data-label="Th">Isl<br><span class="teacher">Fariyal Moosa</span></td>
+        <td class="subject" data-label="Su">Isl<span class="teacher">Fariyal Moosa</span></td>
+        <td class="subject" data-label="Mo">Mat<span class="teacher">Hassan Rasheed</span></td>
+        <td class="subject" data-label="Tu">Eng<span class="teacher">Ahmed Munsif</span></td>
+        <td class="subject" data-label="We">Acc<span class="teacher">Ali Saed</span></td>
+        <td class="subject" data-label="Th">Isl<span class="teacher">Fariyal Moosa</span></td>
       </tr>
     </tbody>
   </table>
@@ -189,4 +206,4 @@
 </div>
 
 </body>
-                                                        </html>
+</html>
